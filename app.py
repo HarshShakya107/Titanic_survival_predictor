@@ -1,9 +1,9 @@
 import streamlit as st
 import numpy as np
-import joblib
+import pickle
 
 
-model = joblib.load("titanic_model.pkl") 
+model = pickle.load(open("titanic.pkl", "rb"))
 
 st.title("🚢 Titanic Survival Prediction ")
 st.write("Enter passenger details to predict survival")
@@ -28,4 +28,5 @@ if st.button("Predict"):
         st.success(f"Passenger will SURVIVE! (Probability: {probability:.2f})")
     else:
         st.error(f"Passenger will NOT survive (Probability: {probability:.2f})")
+
 
